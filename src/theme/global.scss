@@ -1,0 +1,334 @@
+$blue: #3050C2;
+$dark: #000;
+
+@mixin border-radius($property) {
+  -webkit-border-radius: $property;
+  -moz-border-radius: $property;
+  -ms-border-radius: $property;
+  -o-border-radius: $property;
+  border-radius: $property;
+}
+
+body {
+  margin: 0;
+  background: #dfdfdf;
+  color: $dark;
+  font-family: 'Inter', sans-serif;
+}
+
+
+
+/*----------*/
+
+/*coustom design for signup form*/
+
+.signupformbox {
+
+  width: 400px;
+  margin-left: 34%;
+  margin-top: 1%;
+
+
+
+}
+
+.signuph2 {
+  color: dodgerblue;
+  text-align: center;
+}
+
+
+/*login box design*/
+
+.loginh2 {
+  color: white;
+  text-align: center;
+}
+
+
+.loginbox {
+  margin-top: 3%;
+  margin-left: 33%;
+  height: 30%;
+  padding: 20px;
+}
+
+/*temp headingf design*/
+
+
+
+.main-heading {
+
+  color: dodgerblue;
+
+}
+
+.main-heading-primary {
+  display: block;
+  font-size: 35px;
+  font-weight: bold;
+  animation: moveInLeft 1s ease-out;
+}
+
+.main-heading-secondary {
+  font-family: sans-serif;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 31px;
+  color: hotpink;
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+/*----------card animation*/
+
+.fading {
+
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.fdrequestcard {
+  width: 10%;
+}
+
+//navbar Icon link
+.NavbarIco {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+  
+  
+
+}
+
+.NavbarIco:hover {  
+  color: aliceblue;
+ 
+}
+
+.AppbarNav{
+  background:
+  linear-gradient(to right top, #6b8fc5, #768ed1, #888cdb, #9e87e1, #b781e3);
+}
+
+/*menu icon with Link */
+
+.LinkMenuIcon {
+  text-decoration: none;
+  display: flex;
+  color: black;
+
+
+}
+
+.LinkMenuIcon:hover {
+  color: black;
+}
+
+
+
+/*footer--------------------*/
+
+footer {
+  background: url('https://orange.codeberryschool.com/content/images/project-assets/simple-footer.png') repeat center;
+  display: table;
+  margin-top: 5%;
+  width: 100vw;
+  height: 5rem;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+  font-size: .875rem;
+  // bottom: 0;
+  margin-bottom: 0;
+}
+
+.wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  
+}
+
+footer small {
+  color: #ccc;
+  letter-spacing: .025rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.footer-nav a {
+  color: #c74f78;
+  text-decoration: none;
+  margin: 0 .5rem;
+  display: inline-block;
+}
+
+.footer-nav a:hover {
+  color: #f26896;
+  transition: color .15s ease-in-out;
+}
+
+
+/*authentication button design*/
+
+
+.switch input
+{
+  display: none;
+}
+
+.switch 
+{
+  display: inline-block;
+  width: 60px; /*=w*/
+  height: 30px; /*=h*/
+  margin: 4px;
+  transform: translateY(50%);
+  position: relative;
+}
+
+.slider
+{ 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 30px;
+  box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+  cursor: pointer;
+  border: 4px solid transparent;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.slider:before
+{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #777;
+  border-radius: 30px;
+  transform: translateX(-30px); /*translateX(-(w-h))*/
+  transition: 0.2s;
+}
+
+input:checked + .slider:before
+{
+  transform: translateX(30px); /*translateX(w-h)*/
+  background-color: limeGreen;
+}
+
+input:checked + .slider
+{
+  box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+}
+// button card hover
+.button-1 {
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #114875;
+}
+.button-1:hover {
+  box-shadow: 0 0 5px 0 #114875 inset, 0 0 10px 1px #114875;
+  border: 1.5px solid #114875;
+  cursor: pointer;
+}
+
+
+//SearchPeopleHover
+
+.SearchPeopleHover:hover{
+  background: #dfdfdf;
+  transition: 0.1s;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+
+
+}
+.SearchPeopleHoverlistactive:hover{
+  background: rgb(154, 221, 251);
+  transition: 0.1s;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.active{
+  background: rgb(154, 221, 251);
+  transition: 0.1s;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+ 
+}
+
+//for otp design
+.inputStyle {
+  width: 70% !important;
+  height: 45px;
+  border-radius: 7px;
+  border: 1px solid black;
+  margin-left: 8px;
+  margin-right: 8px;
+  background: #fff;
+  font-size: 20px;
+}
+
+//button hover on show
+.ClearChatButton{
+  margin-right:20px;
+  margin-top:10px;
+}
