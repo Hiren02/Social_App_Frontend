@@ -5,7 +5,12 @@ import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { deleteSingleMessage } from 'services/webservices/user/api'
 
-function UserChatMessage({ messageData, own }: any) {
+function UserChatMessage({
+  messageData,
+  own,
+  currentChat,
+  getAllMessagesData,
+}: any) {
   const [ownMessage, setOwnMessage] = useState<boolean>(false)
   const { userData, flag, setFlag } = useContext<any>(GlobalContext)
   useEffect(() => {
@@ -19,6 +24,7 @@ function UserChatMessage({ messageData, own }: any) {
   const deleteChatMessage = async (id: string) => {
     const response = await deleteSingleMessage(userData._id, id)
     console.log('response', response)
+    getAllMessagesData(currentChat)
   }
 
   return (
