@@ -1,59 +1,48 @@
 // @refresh reset
+import { GlobalContext } from 'globalContext'
 import moment from 'moment'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
+import { deleteSingleMessage } from 'services/webservices/user/api'
 
 function UserChatMessage({ messageData, own }: any) {
   const [ownMessage, setOwnMessage] = useState<boolean>(false)
-
+  const { userData, flag, setFlag } = useContext<any>(GlobalContext)
   useEffect(() => {
     if (own) {
       setOwnMessage(true)
     } else {
       setOwnMessage(false)
     }
-  }, [own])
+  }, [own, messageData])
+
+  const deleteChatMessage = async (id: string) => {
+    const response = await deleteSingleMessage(userData._id, id)
+    console.log('response', response)
+  }
 
   return (
     <>
       {ownMessage ? (
-        <p
-          style={{
-            textAlign: 'right',
-            fontSize: '20px',
-            fontFamily: 'revert',
-            marginRight: '10px',
-            marginLeft: '50%',
-            padding: '2px',
-            background: '#9addfb',
-            borderRadius: '10px',
-            marginTop: '10px',
-            wordWrap: 'break-word',
-            textJustify: 'inter-word',
-          }}
-        >
-          {messageData.text}
-          <small style={{ fontSize: '10px', marginLeft: '5px' }}>
-            {moment(messageData.createdAt).format('MMM Do YY h:mm a')}
-          </small>
-        </p>
+        <>
+          <p className="senderchatstyle">
+            {messageData.text}
+            <small style={{ fontSize: '10px', marginLeft: '5px' }}>
+              {moment(messageData.createdAt).format('MMM Do YY h:mm a')}
+            </small>
+            <small
+              className="showdeletebtn"
+              onClick={() => {
+                deleteChatMessage(messageData._id)
+              }}
+            >
+              Delete
+            </small>
+            <div className="overlay"></div>
+          </p>
+        </>
       ) : (
-        <p
-          style={{
-            textAlign: 'left',
-            fontSize: '20px',
-            fontFamily: 'revert',
-            marginLeft: '10px',
-            marginRight: '50%',
-            padding: '2px',
-            background: '#d8f9ff',
-            borderRadius: '10px',
-            marginTop: '10px',
-            width: '50%',
-            wordWrap: 'break-word',
-            textJustify: 'inter-word',
-          }}
-        >
+        <p className="receivechatstyle">
           {messageData.text}
           <small style={{ fontSize: '10px', marginLeft: '5px' }}>
             {moment(messageData.createdAt).format('MMM Do YY h:mm a')}

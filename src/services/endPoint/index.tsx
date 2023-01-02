@@ -36,4 +36,5 @@ export const APIEndpoints = {
   sendMessage: `${url}/api/user/newMessage`,
   newConversation: `${url}/api/user/newConversation`,
   deleteChatUser: `${url}/api/user/deleteChatUser`,
+  deleteSingleMessage: `${url}/api/user/deletesinglemessage`,
 }

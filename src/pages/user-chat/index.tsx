@@ -319,7 +319,6 @@ function UserChatPage() {
                         getAllMessagesData(data)
                       }}
                     >
-                      <> {console.log('data', data)}</>
                       <Chatlistcomponent conversationData={data} />
                     </ListItem>
                     <ClearIcon

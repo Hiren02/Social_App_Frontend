@@ -321,3 +321,14 @@ export const deleteChatUser = async (
     'DELETE'
   )
 }
+
+export const deleteSingleMessage = async (
+  userId: string,
+  messageId: string
+) => {
+  console.log(userId, 'habsngdjhsa', messageId)
+  return api(
+    `${APIEndpoints.deleteSingleMessage}/${userId}/${messageId}`,
+    'DELETE'
+  )
+}
