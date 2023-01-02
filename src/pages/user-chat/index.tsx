@@ -119,7 +119,6 @@ function UserChatPage() {
       msg: message,
     })
     const response = await sendMessage(userData._id, message, conversationId)
-    // console.log('response responseData', response.responseData)
     setMessagesData([...messagesData, response.responseData])
     setMessage('')
   }
@@ -167,6 +166,8 @@ function UserChatPage() {
     }
   }
 
+  // console.log('messagesData', messagesData.length)
+
   return (
     <>
       <Box
@@ -193,6 +194,8 @@ function UserChatPage() {
                     <Messagescomponent
                       messageData={messageData}
                       own={messageData.sender == userData._id}
+                      getAllMessagesData={getAllMessagesData}
+                      currentChat={currentChat}
                     />
                   </div>
                 ))}
