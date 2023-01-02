@@ -15,6 +15,7 @@ import {
   sendMessage,
 } from 'services/webservices/user/api'
 import { GlobalContext } from 'globalContext'
+import ChatHeader from 'components/ChatHeaderComponent'
 import {
   Avatar,
   Button,
@@ -75,7 +76,7 @@ function UserChatPage() {
 
   useEffect(() => {
     if (currentChat) {
-      socket.current = io('http://localhost:7000')
+      socket.current = io(`${process.env.NEXT_PUBLIC_APP_HOST}`)
       socket.current.emit('add-user', userData._id)
     }
   }, [currentChat, flag])
@@ -180,11 +181,24 @@ function UserChatPage() {
         <ToastContainer />
         <Grid container columns={18}>
           <Grid item xs={10} style={{ marginRight: '20px' }}>
+            {currentChat && (
+              <Box
+                style={{
+                  background: '#A7C7E7',
+                  borderTopLeftRadius: '10px',
+                  borderTopRightRadius: '10px',
+                  height: '60px',
+                }}
+              >
+                <ChatHeader currentChat={currentChat} />
+              </Box>
+            )}
             {currentChat ? (
               <Box
                 style={{
                   background: 'white',
-                  borderRadius: '10px',
+                  borderBottomLeftRadius: '10px',
+                  borderBottomRightRadius: '10px',
                   height: '430px',
                   overflowX: 'auto',
                 }}
@@ -194,8 +208,8 @@ function UserChatPage() {
                     <Messagescomponent
                       messageData={messageData}
                       own={messageData.sender == userData._id}
-                      getAllMessagesData={getAllMessagesData}
                       currentChat={currentChat}
+                      getAllMessagesData={getAllMessagesData}
                     />
                   </div>
                 ))}

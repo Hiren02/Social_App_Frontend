@@ -1,13 +1,11 @@
 import { Avatar, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import { GlobalContext } from 'globalContext'
-import { useRouter } from 'next/router'
 import React, { useContext, useEffect, useState } from 'react'
 import { getOneUser } from 'services/webservices/user/api'
 
 function ChatListPage({ conversationData }: any) {
-  const { userData, setFlag, flag } = useContext<any>(GlobalContext)
+  const { userData } = useContext<any>(GlobalContext)
   const [chatProfileData, setChatProfileData] = useState<any>({})
-  const router = useRouter()
 
   const friendId = conversationData.members.find((m: any) => m !== userData._id)
   useEffect(() => {

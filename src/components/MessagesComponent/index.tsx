@@ -8,8 +8,8 @@ import { deleteSingleMessage } from 'services/webservices/user/api'
 function UserChatMessage({
   messageData,
   own,
-  getAllMessagesData,
   currentChat,
+  getAllMessagesData,
 }: any) {
   const [ownMessage, setOwnMessage] = useState<boolean>(false)
   const { userData } = useContext<any>(GlobalContext)

@@ -11,25 +11,17 @@ $dark: #000;
 
 body {
   margin: 0;
-  background: #dfdfdf;
+  background: #141111;
   color: $dark;
   font-family: 'Inter', sans-serif;
 }
 
-
-
-/*----------*/
-
-/*coustom design for signup form*/
+/*custom design for signup form*/
 
 .signupformbox {
-
   width: 400px;
   margin-left: 34%;
   margin-top: 1%;
-
-
-
 }
 
 .signuph2 {
@@ -37,14 +29,12 @@ body {
   text-align: center;
 }
 
-
 /*login box design*/
 
 .loginh2 {
   color: white;
   text-align: center;
 }
-
 
 .loginbox {
   margin-top: 3%;
@@ -55,12 +45,8 @@ body {
 
 /*temp headingf design*/
 
-
-
 .main-heading {
-
   color: dodgerblue;
-
 }
 
 .main-heading-primary {
@@ -116,7 +102,6 @@ body {
 /*----------card animation*/
 
 .fading {
-
   animation-name: fade-in;
   animation-duration: 1s;
 }
@@ -131,7 +116,6 @@ body {
   }
 }
 
-
 .fdrequestcard {
   width: 10%;
 }
@@ -143,14 +127,10 @@ body {
   display: flex;
   justify-content: center;
   margin-right: 20px;
-  
-  
-
 }
 
 .NavbarIco:hover {  
   color: aliceblue;
- 
 }
 
 .AppbarNav{
@@ -164,15 +144,11 @@ body {
   text-decoration: none;
   display: flex;
   color: black;
-
-
 }
 
 .LinkMenuIcon:hover {
   color: black;
 }
-
-
 
 /*footer--------------------*/
 
@@ -186,14 +162,12 @@ footer {
   padding: 1rem;
   font-family: 'Arial', sans-serif;
   font-size: .875rem;
-  // bottom: 0;
   margin-bottom: 0;
 }
 
 .wrapper {
   display: table-cell;
   vertical-align: middle;
-  
 }
 
 footer small {
@@ -215,9 +189,7 @@ footer small {
   transition: color .15s ease-in-out;
 }
 
-
 /*authentication button design*/
-
 
 .switch input
 {
@@ -227,8 +199,8 @@ footer small {
 .switch 
 {
   display: inline-block;
-  width: 60px; /*=w*/
-  height: 30px; /*=h*/
+  width: 60px;
+  height: 30px;
   margin: 4px;
   transform: translateY(50%);
   position: relative;
@@ -257,13 +229,13 @@ footer small {
   height: 100%;
   background-color: #777;
   border-radius: 30px;
-  transform: translateX(-30px); /*translateX(-(w-h))*/
+  transform: translateX(-30px);
   transition: 0.2s;
 }
 
 input:checked + .slider:before
 {
-  transform: translateX(30px); /*translateX(w-h)*/
+  transform: translateX(30px);
   background-color: limeGreen;
 }
 
@@ -286,7 +258,6 @@ input:checked + .slider
   cursor: pointer;
 }
 
-
 //SearchPeopleHover
 
 .SearchPeopleHover:hover{
@@ -295,8 +266,6 @@ input:checked + .slider
   cursor: pointer;
   width: 100%;
   border-radius: 10px;
-
-
 }
 .SearchPeopleHoverlistactive:hover{
   background: rgb(154, 221, 251);
@@ -312,7 +281,6 @@ input:checked + .slider
   cursor: pointer;
   width: 100%;
   border-radius: 10px;
- 
 }
 
 //for otp design
@@ -342,7 +310,6 @@ input:checked + .slider
   font-family: revert;
   margin-right: 10px;
   margin-left: 50%;
-
   background: #9addfb;
   border-radius: 10px;
   margin-top: 10px;
@@ -358,11 +325,13 @@ input:checked + .slider
   font-family: revert;
   margin-right: 10px;
   margin-left: 50%;
+  background: #9addfb;
   border-radius: 10px;
   margin-top: 10px;
   word-wrap: break-word;
   text-justify: inter-word;
   display: block;
+
  
 }
 
@@ -389,7 +358,6 @@ input:checked + .slider
   font-family: revert;
   margin-right: 10px;
   margin-right: 50%;
-  padding: 2px;
   background: #9addfb;
   border-radius: 10px;
   margin-top: 10px;
