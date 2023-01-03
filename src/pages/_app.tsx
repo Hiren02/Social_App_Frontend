@@ -10,7 +10,8 @@ import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
 
 const MainApp = ({ Component, pageProps }: AppProps) => {
-  const [flag,setFlag] = useState<boolean>(false)
+  const [flag, setFlag] = useState<boolean>(false)
+  const [requestCount, setRequestCount] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(
     typeof window !== 'undefined' &&
       window.localStorage.getItem('token') !== null &&
@@ -53,7 +54,9 @@ const MainApp = ({ Component, pageProps }: AppProps) => {
               userData,
               setUserData,
               setFlag,
-              flag
+              flag,
+              setRequestCount,
+              requestCount,
             }}
           >
             <SSRProvider>

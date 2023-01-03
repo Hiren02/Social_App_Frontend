@@ -27,31 +27,13 @@ import LoginIcon from '@mui/icons-material/Login'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import UploadPostPage from 'components/UploadPostModal'
 import MarkUnreadChatAltOutlinedIcon from '@mui/icons-material/MarkUnreadChatAltOutlined'
+import Image from 'next/image'
+import logo from '../../../../public/honey.png'
+import Badge from '@mui/material/Badge'
 
-const pages = [
-  {
-    title: 'Home',
-    icon: <HomeIcon />,
-    path: '/',
-  },
-  {
-    title: 'Search',
-    icon: <SearchIcon />,
-    path: '/search',
-  },
-  {
-    title: 'Friend Requests',
-    icon: <Diversity3Icon />,
-    path: '/friend-request',
-  },
-  {
-    title: 'Chat',
-    icon: <MarkUnreadChatAltOutlinedIcon />,
-    path: '/user-chat',
-  },
-]
 function ResponsiveAppBar() {
-  const { userData, setUserData, flag } = useContext<any>(GlobalContext)
+  const { userData, setUserData, flag, requestCount } =
+    useContext<any>(GlobalContext)
   const router = useRouter()
   const { status } = useSession()
   const [headerShow, setHeaderShow] = useState<boolean>(false)
@@ -73,6 +55,39 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+
+  const pages = [
+    {
+      title: 'Home',
+      icon: <HomeIcon />,
+      path: '/',
+    },
+    {
+      title: 'Search',
+      icon: <SearchIcon />,
+      path: '/search',
+    },
+    {
+      title: 'Friend Requests',
+      icon: (
+        <Badge
+          color="secondary"
+          overlap="circular"
+          badgeContent={requestCount}
+          variant="dot"
+        >
+          <Diversity3Icon />
+        </Badge>
+      ),
+      path: '/friend-request',
+    },
+    {
+      title: 'Chat',
+      icon: <MarkUnreadChatAltOutlinedIcon />,
+      path: '/user-chat',
+    },
+  ]
+
   useEffect(() => {
     if (status === 'authenticated') {
       setHeaderShow(true)
@@ -82,13 +97,14 @@ function ResponsiveAppBar() {
   }, [userData, status, flag])
 
   const onClickLogout = () => {
-    signOut()
-    router.push('/login')
+    signOut({ redirect: false, callbackUrl: 'http://localhost:3000/login' })
     localStorage.removeItem('userData')
     localStorage.removeItem('token')
     setUserData({})
     handleCloseUserMenu()
+    router.push('/login')
   }
+
   return (
     <>
       <AppBar position="fixed" color="primary" sx={{ top: 0 }}>
@@ -190,41 +206,8 @@ function ResponsiveAppBar() {
                 </Menu>
               ) : null}
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              HONEYED
-            </Typography>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              HONEYED
-            </Typography>
+            <Image src={logo} alt="1" height={50} width={50} />
+            <span className="headingname">HONEYED</span>
             {headerShow ? (
               <>
                 <Box
@@ -331,7 +314,9 @@ function ResponsiveAppBar() {
                       style={{
                         color: 'red',
                       }}
-                      onClick={onClickLogout}
+                      onClick={() => {
+                        onClickLogout()
+                      }}
                     >
                       <LogoutIcon /> Logout
                     </Button>

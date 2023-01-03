@@ -166,9 +166,6 @@ function UserChatPage() {
     } else {
     }
   }
-
-  // console.log('messagesData', messagesData.length)
-
   return (
     <>
       <Box
@@ -193,16 +190,9 @@ function UserChatPage() {
                 <ChatHeader currentChat={currentChat} />
               </Box>
             )}
+
             {currentChat ? (
-              <Box
-                style={{
-                  background: 'white',
-                  borderBottomLeftRadius: '10px',
-                  borderBottomRightRadius: '10px',
-                  height: '430px',
-                  overflowX: 'auto',
-                }}
-              >
+              <Box className="chatbackgroundtheam">
                 {messagesData.map((messageData: any) => (
                   <div ref={scrollRef}>
                     <Messagescomponent

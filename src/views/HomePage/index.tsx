@@ -29,6 +29,7 @@ import Diversity3Icon from '@mui/icons-material/Diversity3'
 import Link from 'next/link'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CommentsPage from 'components/CommentsModal'
+import { signOut } from 'next-auth/react'
 
 function HomePage() {
   const { userData, flag } = useContext<any>(GlobalContext)
@@ -73,10 +74,10 @@ function HomePage() {
   const getFriendPostsList = async () => {
     const response = await getFriendPosts(userData._id, 0, '3')
     if (response.responseData == undefined) {
-      alert('your login session has expired, please login again')
-      return
+      signOut({ redirect: false })
+    } else {
+      setFriendPostsListData(response.responseData.records)
     }
-    setFriendPostsListData(response.responseData.records)
   }
   const onLike = async (id: string, to: string) => {
     setLoading(true)
@@ -113,19 +114,7 @@ function HomePage() {
       >
         {friendPostsListData.length > 0 ? (
           friendPostsListData.map((data: any) => (
-            <Card
-              key={data.posts._id}
-              sx={{ position: 'relative' }}
-              style={{
-                width: '50%',
-                marginTop: '2%',
-                marginLeft: '25%',
-                padding: '20px',
-                borderRadius: '20px',
-                boxShadow:
-                  'rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px',
-              }}
-            >
+            <Card key={data.posts._id} className="postcardhomepage">
               <Container>
                 <table style={{ width: '100%' }}>
                   <tbody>
@@ -167,7 +156,7 @@ function HomePage() {
 
                 <img
                   alt="green iguana"
-                  height="100%"
+                  height="500px"
                   width="100%"
                   style={{ marginTop: '5%' }}
                   src={data.posts.imageURL}

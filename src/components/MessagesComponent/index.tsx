@@ -4,6 +4,7 @@ import moment from 'moment'
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { deleteSingleMessage } from 'services/webservices/user/api'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
 function UserChatMessage({
   messageData,
@@ -30,23 +31,21 @@ function UserChatMessage({
   return (
     <>
       {ownMessage ? (
-        <>
-          <p className="senderchatstyle">
-            {messageData.text}
-            <small style={{ fontSize: '10px', marginLeft: '5px' }}>
-              {moment(messageData.createdAt).format('MMM Do YY h:mm a')}
-            </small>
-            <small
-              className="showdeletebtn"
-              onClick={() => {
-                deleteChatMessage(messageData._id)
-              }}
-            >
-              Delete
-            </small>
-            <div className="overlay"></div>
-          </p>
-        </>
+        <p className="senderchatstyle">
+          {messageData.text}
+          <small style={{ fontSize: '10px', marginLeft: '5px' }}>
+            {moment(messageData.createdAt).format('MMM Do YY h:mm a')}
+          </small>
+
+          <DeleteOutlineOutlinedIcon
+            className="showdeletebtn"
+            onClick={() => {
+              deleteChatMessage(messageData._id)
+            }}
+          />
+
+          <div className="overlay"></div>
+        </p>
       ) : (
         <p className="receivechatstyle">
           {messageData.text}

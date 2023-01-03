@@ -97,7 +97,7 @@ const ProfilePage = () => {
 
   const allPostsOfUser = async () => {
     const response = await getAllPostsOfUser(userData._id)
-    setAllPostsOfUserData(response.responseData.records)
+    setAllPostsOfUserData(response.responseData?.records)
   }
 
   const twoFactorAuthenticationFunction = async () => {
@@ -256,7 +256,7 @@ const ProfilePage = () => {
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-              {allPostsOfUserData.length > 0 ? (
+              {allPostsOfUserData?.length > 0 ? (
                 allPostsOfUserData.map((postData: any) => (
                   <Grid item xs={12} sm={6} md={4} key={postData.posts._id}>
                     <Card
