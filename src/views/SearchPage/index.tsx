@@ -23,8 +23,11 @@ function SearchPage() {
 
   const searchHandler = async (event: any) => {
     const response = await getAllUsers(userData._id, event.target.value)
-    // console.log(response.responseData.records)
-    setShowSuggetionData(response.responseData.records)
+    if (response.responseData.message) {
+      alert(response.responseData.message)
+    } else {
+      setShowSuggetionData(response.responseData.records)
+    }
   }
 
   const getSelectedUserData = async (id: string) => {

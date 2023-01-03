@@ -71,12 +71,7 @@ function ResponsiveAppBar() {
       title: 'Friend Requests',
       icon:
         requestCount != undefined ? (
-          <Badge
-            color="secondary"
-            overlap="circular"
-            badgeContent={requestCount}
-            variant="dot"
-          >
+          <Badge color="secondary" badgeContent={requestCount} max={9}>
             <Diversity3Icon />
           </Badge>
         ) : (
@@ -158,7 +153,6 @@ function ResponsiveAppBar() {
                         color: 'inherit',
                         textDecoration: 'none',
                         textTransform: 'capitalize',
-                        padding: '20px',
                       }}
                     >
                       <table>
@@ -168,13 +162,14 @@ function ResponsiveAppBar() {
                               <Icon
                                 style={{
                                   height: '100%',
+                                  paddingRight: '32px',
+                                  paddingTop: '5px',
                                 }}
                               >
                                 {page.icon}
                               </Icon>
                             </td>
                             <td>
-                              {' '}
                               <Typography
                                 style={{
                                   marginRight: '5px',
@@ -216,7 +211,7 @@ function ResponsiveAppBar() {
                 <Box
                   sx={{
                     display: { xs: 'none', md: 'flex' },
-                    marginLeft: '65%',
+                    marginLeft: '62%',
                   }}
                 >
                   {pages.map((page) => (
@@ -226,11 +221,19 @@ function ResponsiveAppBar() {
                       href={`${page.path}`}
                       style={{
                         color: 'inherit',
-                        marginRight: '20px',
+                        marginRight: '10px',
                       }}
                     >
                       <Tooltip title={page.title}>
-                        <Icon style={{ height: '100%' }}>{page.icon}</Icon>
+                        <Icon
+                          style={{
+                            height: '100%',
+                            paddingRight: '32px',
+                            paddingTop: '5px',
+                          }}
+                        >
+                          {page.icon}
+                        </Icon>
                       </Tooltip>
                     </Link>
                   ))}
