@@ -100,7 +100,7 @@ function UserChatPage() {
     setAllUserList(response.responseData.records)
   }
   const getAllMessagesData = async (data: any) => {
-    setActive(data)
+    setActive(data._id)
     setConversationId(data._id)
     setCurrentChat(data)
     const response = await getAllMessages(userData._id, data._id)
@@ -122,10 +122,11 @@ function UserChatPage() {
     const response = await sendMessage(userData._id, message, conversationId)
     setMessagesData([...messagesData, response.responseData])
     setMessage('')
+    getAllChatData()
+    setActive(response.responseData.conversationId)
   }
 
   useEffect(() => {
-    console.log('data ave chhe joto')
     if (socket.current) {
       socket.current.on('msg-recieve', (data: any) => {
         setArrivalMessage({
@@ -147,13 +148,13 @@ function UserChatPage() {
   const startNewConversation = async (receiverId: string) => {
     setFlag(true)
     const response = await newConversation(userData._id, receiverId)
-
+    console.log('response', response)
     if (response.responseCode == 400) {
       toast.info(response.responseMessage)
     } else {
-      toast.success(response.responseMessage)
       setOpen(false)
       setFlag(false)
+      getAllMessagesData(response.responseData)
     }
   }
 
@@ -161,9 +162,11 @@ function UserChatPage() {
     if (confirm('are you sure delete conversation with messages') == true) {
       const response1 = await deleteChatUser(userData._id, id)
       getAllChatData()
-      setCurrentChat(null)
-      setShowTextBox(false)
-    } else {
+      if (currentChat && id == currentChat._id) {
+        setActive(null)
+        setCurrentChat(null)
+        setShowTextBox(false)
+      }
     }
   }
   return (
@@ -320,7 +323,7 @@ function UserChatPage() {
                   >
                     <ListItem
                       className={`SearchPeopleHoverlistactive ${
-                        active == data && 'active'
+                        active == data._id && 'active'
                       }`}
                       onClick={() => {
                         getAllMessagesData(data)
