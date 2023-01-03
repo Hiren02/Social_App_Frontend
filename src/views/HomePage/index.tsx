@@ -21,7 +21,12 @@ import GooglePlus from 'mdi-material-ui/GooglePlus'
 import { GlobalContext } from 'globalContext'
 import Box from '@mui/material/Box'
 import React, { useContext, useEffect, useState, MouseEvent } from 'react'
-import { addLike, disLike, getFriendPosts } from 'services/webservices/user/api'
+import {
+  addLike,
+  disLike,
+  getAllRequests,
+  getFriendPosts,
+} from 'services/webservices/user/api'
 import { Container } from '@mui/system'
 import { useRouter } from 'next/router'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
@@ -32,7 +37,7 @@ import CommentsPage from 'components/CommentsModal'
 import { signOut } from 'next-auth/react'
 
 function HomePage() {
-  const { userData, flag } = useContext<any>(GlobalContext)
+  const { userData, flag, setRequestCount } = useContext<any>(GlobalContext)
   const [friendPostsListData, setFriendPostsListData] = useState<any>([])
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [skip, setSkip] = useState<number>(0)
@@ -52,7 +57,13 @@ function HomePage() {
   const router = useRouter()
   useEffect(() => {
     getFriendPostsList()
+    getAllrequestCount()
   }, [flag])
+
+  const getAllrequestCount = async () => {
+    const response = await getAllRequests(userData._id)
+    setRequestCount(response.responseData.records.length)
+  }
 
   const fetchMoreData = () => {
     setSkip(skip + 3)

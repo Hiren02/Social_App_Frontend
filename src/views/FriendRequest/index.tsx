@@ -20,7 +20,7 @@ import { Box } from '@mui/system'
 import { useRouter } from 'next/router'
 
 function FriendRequest() {
-  const { userData, setRequestCount } = useContext<any>(GlobalContext)
+  const { userData, setRequestCount,requestCount } = useContext<any>(GlobalContext)
   const [friendSuggetionList, setFriendSuggetionList] = useState<any>([])
   const [allRequests, setAllRequests] = useState<any>([])
   const router = useRouter()

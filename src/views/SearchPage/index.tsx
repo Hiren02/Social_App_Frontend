@@ -32,7 +32,7 @@ function SearchPage() {
     const response = await getSelectedUser(userData._id, id)
     // console.log(response.responseData)
     if (response.responseData.self) {
-      router.push('/ProfilePage')
+      router.push('/profile')
     }
     if (response.responseData.friend) {
       router.push(`/user-friend-list/${response.responseData.friend_id}`)

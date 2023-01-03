@@ -69,16 +69,19 @@ function ResponsiveAppBar() {
     },
     {
       title: 'Friend Requests',
-      icon: (
-        <Badge
-          color="secondary"
-          overlap="circular"
-          badgeContent={requestCount}
-          variant="dot"
-        >
+      icon:
+        requestCount != undefined ? (
+          <Badge
+            color="secondary"
+            overlap="circular"
+            badgeContent={requestCount}
+            variant="dot"
+          >
+            <Diversity3Icon />
+          </Badge>
+        ) : (
           <Diversity3Icon />
-        </Badge>
-      ),
+        ),
       path: '/friend-request',
     },
     {
@@ -94,7 +97,7 @@ function ResponsiveAppBar() {
     } else {
       setHeaderShow(false)
     }
-  }, [userData, status, flag])
+  }, [userData, status, flag, requestCount])
 
   const onClickLogout = () => {
     signOut({ redirect: false, callbackUrl: 'http://localhost:3000/login' })

@@ -11,7 +11,7 @@ import { SessionProvider } from 'next-auth/react'
 
 const MainApp = ({ Component, pageProps }: AppProps) => {
   const [flag, setFlag] = useState<boolean>(false)
-  const [requestCount, setRequestCount] = useState([])
+  const [requestCount, setRequestCount] = useState()
   const [isLoggedIn, setIsLoggedIn] = useState(
     typeof window !== 'undefined' &&
       window.localStorage.getItem('token') !== null &&
