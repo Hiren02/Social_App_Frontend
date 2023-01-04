@@ -20,7 +20,8 @@ import { Box } from '@mui/system'
 import { useRouter } from 'next/router'
 
 function FriendRequest() {
-  const { userData, setRequestCount,requestCount } = useContext<any>(GlobalContext)
+  const { userData, setRequestCount, requestCount } =
+    useContext<any>(GlobalContext)
   const [friendSuggetionList, setFriendSuggetionList] = useState<any>([])
   const [allRequests, setAllRequests] = useState<any>([])
   const router = useRouter()
@@ -108,7 +109,7 @@ function FriendRequest() {
                   <br />
                 </>
               }
-            />{' '}
+            />
             <Button
               style={{ marginLeft: '2px' }}
               onClick={() => acceptRequest(data.requestsInfo._id)}
@@ -194,8 +195,8 @@ function FriendRequest() {
                   <Button
                     style={{
                       marginLeft: '2px',
-                      background: '#169FFF',
-                      color: 'white',
+                      // background: '#169FFF',
+                      color: '#169FFF',
                       fontSize: '13px',
                       fontWeight: 'bold',
                     }}

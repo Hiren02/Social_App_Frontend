@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import CardContent from '@mui/material/CardContent'
 import { Col, Row } from 'react-bootstrap'
 import { GlobalContext } from 'globalContext'
+import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined'
 import {
   useContext,
   useEffect,
@@ -161,37 +162,48 @@ const ProfilePage = () => {
             >
               <Row style={{ width: '100%' }}>
                 <Col>
-                  {userProfileData.profilePhoto ? (
-                    <IconButton sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        sx={{ width: 150, height: 150 }}
-                        src={userProfileData.profilePhoto}
-                      />
-                    </IconButton>
-                  ) : (
-                    <IconButton sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        sx={{ width: 150, height: 150 }}
-                        src="/public/images/avatars/2.png"
-                      />
-                    </IconButton>
-                  )}
-                  <ButtonStyled
-                    component="label"
-                    variant="contained"
-                    htmlFor="account-settings-upload-image"
-                  >
-                    Update Profile
-                    <input
-                      hidden
-                      type="file"
-                      onChange={onChange}
-                      accept="image/png, image/jpeg"
-                      id="account-settings-upload-image"
-                    />
-                  </ButtonStyled>
+                  <div className="container">
+                    {userProfileData.profilePhoto ? (
+                      <IconButton sx={{ p: 0 }}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          sx={{ width: 150, height: 150 }}
+                          src={userProfileData.profilePhoto}
+                        />
+                      </IconButton>
+                    ) : (
+                      <IconButton sx={{ p: 0 }}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          sx={{ width: 150, height: 150 }}
+                          src="/public/images/avatars/2.png"
+                        />
+                      </IconButton>
+                    )}
+                    <div className="overlay"></div>
+                    <div className="uploadbtn">
+                      <Tooltip title="Update Profile">
+                        <ButtonStyled
+                          component="label"
+                          htmlFor="account-settings-upload-image"
+                          style={{
+                            color: 'black',
+                            transition: 'opacity .35s ease',
+                            background: '#dfdfdf',
+                          }}
+                        >
+                          <PhotoCameraOutlinedIcon />
+                          <input
+                            hidden
+                            type="file"
+                            onChange={onChange}
+                            accept="image/png, image/jpeg"
+                            id="account-settings-upload-image"
+                          />
+                        </ButtonStyled>
+                      </Tooltip>
+                    </div>
+                  </div>
                 </Col>
                 <Col>
                   <span style={{ textAlign: 'left', fontSize: '20px' }}>

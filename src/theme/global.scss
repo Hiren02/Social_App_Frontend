@@ -11,7 +11,6 @@ $dark: #000;
 
 body {
   margin: 0;
-  // background: #141111;
   background: #dfdfdf;
   color: $dark;
   font-family: 'Inter', sans-serif;
@@ -148,24 +147,6 @@ body {
 
 .fdrequestcard {
   width: 10%;
-}
-
-//navbar Icon link
-.NavbarIco {
-  color: white;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  margin-right: 20px;
-}
-
-.NavbarIco:hover {  
-  color: aliceblue;
-}
-
-.AppbarNav{
-  background:
-  linear-gradient(to right top, #6b8fc5, #768ed1, #888cdb, #9e87e1, #b781e3);
 }
 
 /*menu icon with Link */
@@ -407,4 +388,45 @@ input:checked + .slider
   text-justify: inter-word;
 
 
+}
+
+
+//upload profile style
+.container {
+  position: relative;
+  margin-top: 50px;
+  border-radius: 100%;
+ 
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.container:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+.uploadbtn {
+  position: absolute;
+
+  margin-left: 100px;
+ bottom:0;
+  transition: opacity .35s ease;
+}
+
+.uploadbtn a {
+  width: 200px;
+  padding: 12px 48px;
+  text-align: center;
+  color: black;
+  border: 2px solid black;
+  z-index: 1;
+}
+
+.container:hover .uploadbtn {
+  opacity: 1;
 }
