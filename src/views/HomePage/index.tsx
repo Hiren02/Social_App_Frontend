@@ -35,6 +35,7 @@ import Link from 'next/link'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CommentsPage from 'components/CommentsModal'
 import { signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 function HomePage() {
   const { userData, flag, setRequestCount } = useContext<any>(GlobalContext)
@@ -47,6 +48,8 @@ function HomePage() {
   const [loading, setLoading] = useState<boolean>(false)
   const openShareIcon = Boolean(anchorEl)
   const [open, setOpen] = useState(false)
+  const session = useSession()
+  console.log('session', session)
   const handleOpen = (id: string, userName: string, postId: string) => {
     setOpen(true)
     setId(id)
@@ -62,7 +65,8 @@ function HomePage() {
 
   const getAllrequestCount = async () => {
     const response = await getAllRequests(userData._id)
-    setRequestCount(response.responseData.records.length)
+    console.log(response)
+    setRequestCount(response?.responseData?.records?.length)
   }
 
   const fetchMoreData = () => {

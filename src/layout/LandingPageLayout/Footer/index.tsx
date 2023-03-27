@@ -24,7 +24,7 @@ const Footer = () => {
       }}
     >
       {' '}
-      &copy;2022-23 <strong>Nayan Sarvaiya</strong>, All Rights Reserved
+      &copy;2022-23 <strong>Hiren Chavda</strong>, All Rights Reserved
     </p>
   )
 }

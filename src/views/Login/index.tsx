@@ -163,7 +163,8 @@ const LoginPage: FC = () => {
             password: value.password,
             redirect: false,
           })
-
+          console.log('rrespons', data)
+          console.log('meet', meet)
           toast.success(data.responseMessage)
           setLoginData(data.responseData)
           setUserToken(data.responseData.token)
