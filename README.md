@@ -28,3 +28,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     - _services_ - anything that has to do with env files, apollo client and others
     - _theme_ - contains global css, reusable classes and theme provider
     - _utils_ - re-usable functionalities are stored here.
+"# social_app" 
